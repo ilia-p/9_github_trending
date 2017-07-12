@@ -14,7 +14,7 @@ def get_trending_repositories(top_size):
         repo_count += 1
         if repo_count <= top_size:
             repo_star = str(repo['stargazers_count'])
-            repo_url  = repo['url']
+            repo_url  = repo['owner']['repos_url']
             repo_list.append((repo_star, repo_url))
         else:
             break

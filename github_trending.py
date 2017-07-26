@@ -1,17 +1,15 @@
+import sys
 import requests
 from datetime import date, timedelta
-import re
 
 def get_dates(days_period):
-    if re.compile(r'\d+').search(days_period):
+    if days_period.isdigit():
         date_now = date.today()
         delta_week_ago = timedelta(days = int(days_period))
         date_week_ago = date_now - delta_week_ago
         dates = (date_week_ago, date_now)
         return dates
-    else:
-        print('Введено некоррекное значение, повторите запуск')
-        exit()
+    sys.exit('Введено некоррекное значение, повторите запуск')
     
 def get_request(top_size, dates):
     query = 'created:{}..{}'.format(dates[0], dates[1])
